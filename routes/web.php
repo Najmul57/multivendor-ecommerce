@@ -26,7 +26,16 @@ require __DIR__ . '/auth.php';
 // admin controller
 Route::middleware(['auth', 'access:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'admin'])->name('admin.dashbaord');
+
+    //profile
+    Route::get('/admin/profile',[AdminController::class,'profile'])->name('admin.profile');
+
+    //logout
+    Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
 });
+
+//admin login
+Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
 
 
 // vendor controller
