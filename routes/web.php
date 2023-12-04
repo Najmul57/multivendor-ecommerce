@@ -46,4 +46,17 @@ Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
 // vendor controller
 Route::middleware(['auth', 'access:vendor'])->group(function () {
     Route::get('vendor/dashboard', [VendorController::class, 'vendor'])->name('vendor.dashbaord');
+
+    //profile
+    Route::get('/vendor/profile',[VendorController::class,'profile'])->name('vendor.profile');
+    Route::post('vendor/profile/store',[VendorController::class,'profileStore'])->name('vendor.profile.store');
+
+    //change password
+    Route::get('/change/password',[VendorController::class,'changepassword'])->name('change.password');
+    Route::post('/update/password',[VendorController::class,'updatepassword'])->name('update.password');
+
+    //logout
+    Route::get('vendor/logout',[VendorController::class,'logout'])->name('vendor.logout');
 });
+//vendor login
+Route::get('vendor/login',[VendorController::class,'login'])->name('vendor.login');
