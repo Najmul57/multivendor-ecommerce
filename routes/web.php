@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Vendor\VendorController;
@@ -43,6 +44,14 @@ Route::middleware(['auth', 'access:admin'])->group(function () {
 
     //logout
     Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
+
+    //brand controller
+    Route::get('admin/brand-list',[BrandController::class,'index'])->name('brand.list');
+    Route::get('admin/add-brand',[BrandController::class,'add'])->name('add.brand');
+    Route::post('admin/brand-store',[BrandController::class,'store'])->name('store.brand');
+    Route::get('admin/brand/edit/{id}',[BrandController::class,'edit'])->name('edit.brand');
+    Route::post('admin/brand-update/{id}',[BrandController::class,'update'])->name('update.brand');
+    Route::get('admin/brand/delete/{id}',[BrandController::class,'delete'])->name('delete.brand');
 });
 
 //admin login
